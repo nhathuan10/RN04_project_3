@@ -13,11 +13,7 @@ export default function App() {
     //   </NavigationContainer>
     // </Provider>
     <View>
-<<<<<<< HEAD
       <Text>huan</Text>
-=======
-      <Text>Huan</Text>
->>>>>>> 94ef66856dcf6fb8b45da3e8bf95ca74f51fa304
     </View>
   )
 }
