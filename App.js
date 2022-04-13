@@ -13,7 +13,7 @@ export default function App() {
     //   </NavigationContainer>
     // </Provider>
     <View>
-      <Text>asd</Text>
+      <Text>Huan</Text>
     </View>
   )
 }
