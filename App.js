@@ -7,15 +7,12 @@ import RootNavigation from './src/navigation/rootNavigation'
 
 export default function App() {
   return(
-    // <Provider store={store}>
-    //   <NavigationContainer>
-    //     <RootNavigation />
-    //   </NavigationContainer>
-    // </Provider>
-    <View>
-      <Text>huan</Text>
-    </View>
-  )
+    <Provider store={store}>
+      <NavigationContainer>
+        <RootNavigation />
+      </NavigationContainer>
+    </Provider>
+    )
 }
 
 const styles = StyleSheet.create({})
