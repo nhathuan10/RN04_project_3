@@ -35,7 +35,7 @@ export default function SignUpScreen({ navigation }) {
                 validationSchema={validationSchema}
                 onSubmit={handleSubmit}
             >
-                {({ errors, values, touched, handleChange, handleSub, it, handleBlur }) => {
+                {({ errors, values, touched, handleChange, handleSubmit, handleBlur }) => {
                     return (
                         <LoginForm style={styles.loginForm}>
                             <TextInput
@@ -71,6 +71,7 @@ export default function SignUpScreen({ navigation }) {
                                 onBlur={handleBlur('phone')}
                                 errMsg={errors.phone}
                                 touched={touched.phone}
+                                keyboardType='numeric'
                             />
                             <Button text='Sign Up' title style={styles.button} />
                             <TouchableOpacity onPress={() => navigation.navigate(stackName.loginStack)}>

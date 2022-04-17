@@ -41,7 +41,7 @@ export default function TextInput(props) {
 
 const styles = StyleSheet.create({
     container: {
-        width: '95%',
+        width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
         margin: 15,
