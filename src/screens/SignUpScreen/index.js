@@ -7,10 +7,21 @@ import { Formik } from 'formik'
 import *as Yup from 'yup'
 
 const validationSchema = Yup.object().shape({
-    email: Yup.string().required('Email must not be empty').email('Invalid email'),
-    password: Yup.string().required('Password must not be empty').max(8, 'Characters are more than 8').min(4, 'Characters are less than 4'),
-    name: Yup.string().required('Name must not be empty').matches(/^[A-Za-z ]*$/, 'Invalid name'),
-    phone: Yup.number().typeError('Invalid phone number').positive('Phone number must not be negative').integer('Phone number must be integer').required('Phone number must not be empty'),
+    email: Yup.string()
+        .required('Email must not be empty')
+        .email('Invalid email'),
+    password: Yup.string()
+        .required('Password must not be empty')
+        .max(8, 'Characters are more than 8')
+        .min(4, 'Characters are less than 4'),
+    name: Yup.string()
+        .required('Name must not be empty')
+        .matches(/^[A-Za-z ]*$/, 'Invalid name'),
+    phone: Yup.number()
+        .typeError('Invalid phone number')
+        .positive('Phone number must not be negative')
+        .integer('Phone number must be integer')
+        .required('Phone number must not be empty'),
 })
 
 export default function SignUpScreen({ navigation }) {
@@ -43,28 +54,28 @@ export default function SignUpScreen({ navigation }) {
                                 onChangeText={handleChange('password')}
                                 onBlur={handleBlur('password')}
                                 errMsg={errors.password}
-                                touched={touched.password} 
+                                touched={touched.password}
                             />
-                            <TextInput 
+                            <TextInput
                                 title='Name'
                                 placeholder='Huan Ba'
                                 onChangeText={handleChange('name')}
                                 onBlur={handleBlur('name')}
                                 errMsg={errors.name}
-                                touched={touched.name} 
+                                touched={touched.name}
                             />
-                            <TextInput 
+                            <TextInput
                                 title='Phone'
                                 placeholder='091-xxx-xxxx'
                                 onChangeText={handleChange('phone')}
                                 onBlur={handleBlur('phone')}
                                 errMsg={errors.phone}
-                                touched={touched.phone} 
+                                touched={touched.phone}
                             />
                             <Button text='Sign Up' title style={styles.button} />
                             <TouchableOpacity onPress={() => navigation.navigate(stackName.loginStack)}>
                                 <Text style={styles.text} >
-                                    Already have an account
+                                    Already have an account ?
                                 </Text>
                             </TouchableOpacity>
                         </LoginForm>
