@@ -16,9 +16,11 @@ export default function SignUpScreen({ navigation }) {
                 <TextInput title='Password' password secureTextEntry />
                 <TextInput title='Name' />
                 <TextInput title='Phone' />
-                <Button text='Sign Up' title style={{ width: '90%',  marginTop: 10, backgroundColor: COLORS.regularGray}} />
-                <TouchableOpacity>
-                    <Text style={{ color: COLORS.lightGray, marginTop: 15 }}  >Already have an account</Text>
+                <Button text='Sign Up' title style={{ width: '90%', marginTop: 12, backgroundColor: COLORS.regularGray }} />
+                <TouchableOpacity onPress={() => navigation.navigate(stackName.loginStack)}>
+                    <Text style={{ color: COLORS.lightGray, marginTop: 15 }} >
+                        Already have an account
+                    </Text>
                 </TouchableOpacity>
             </View>
         </BackgroundView>

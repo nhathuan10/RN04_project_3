@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 10
+        margin: 15
     },
     textInput: {
         borderColor: COLORS.lightGray,
