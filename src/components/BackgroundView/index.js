@@ -2,11 +2,11 @@ import { StatusBar, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { COLORS } from '../../themes'
 
-export default function BackgroundView() {
+export default function BackgroundView({ children, style }) {
     return (
-        <View style={styles.container}>
+        <View style={{ ...styles.container, ...style }}>
             <StatusBar barStyle='light-content' />
-            {this.props.children}
+            {children}
         </View >
     )
 }
