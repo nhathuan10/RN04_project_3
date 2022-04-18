@@ -21,9 +21,9 @@ export default function LoginScreen({ navigation }) {
     const dispatch = useDispatch();
     const email = useSelector(state => state.signUpReducer.userInfo.email);
     const password = useSelector(state => state.signUpReducer.userInfo.password);
-    const animatedTimingValue = useRef(new Animated.Value(0)).current;
-    const translateY = useRef(new Animated.Value(-100)).current;
-
+    const opacity = useRef(new Animated.Value(0)).current;
+    const translateY = useRef(new Animated.Value(-200)).current;
+    
     const handleSubmit = (values) => {
         if (values.email === email && values.password === password) {
             navigation.navigate(stackName.homeStack);
@@ -36,11 +36,18 @@ export default function LoginScreen({ navigation }) {
     }
 
     useEffect(() => {
-        Animated.timing(animatedTimingValue, {
-            toValue: 1,
-            duration: 1500,
-            useNativeDriver: true,
-        }).start()
+        Animated.parallel([
+            Animated.timing(opacity, {
+                toValue: 1,
+                duration: 1000,
+                useNativeDriver: true,
+            }),
+            Animated.timing(translateY, {
+                toValue: 0,
+                duration: 1200,
+                useNativeDriver: true,
+            }),
+        ]).start();
     })
 
     return (
@@ -52,7 +59,12 @@ export default function LoginScreen({ navigation }) {
             >
                 {({ errors, values, touched, handleChange, handleSubmit, handleBlur }) => {
                     return (
-                        <LoginForm style={{ ...styles.loginForm, ...styles.loginForm, opacity: animatedTimingValue }}>
+                        <LoginForm style={{
+                            ...styles.loginForm,
+                            opacity,
+                            transform: [ {translateY}],
+                        }}
+                        >
                             <TextInput
                                 title='Email'
                                 placeholder='email@example.com'
@@ -74,7 +86,7 @@ export default function LoginScreen({ navigation }) {
                                 touched={touched.password}
                             />
                             <Button text='Log in' title style={{ ...styles.button, backgroundColor: COLORS.boldGray }} onPressLogIn={handleSubmit} />
-                            <TouchableOpacity onPress={() => navigation.goBack()}>
+                            <TouchableOpacity onPress={() => navigation.navigate(stackName.signUpStack)}>
                                 <Text style={{ ...styles.text, color: COLORS.main }} >
                                     Create new account
                                 </Text>
@@ -96,7 +108,8 @@ const styles = StyleSheet.create({
     },
     loginForm: {
         height: 400,
-        backgroundColor: COLORS.semiLightGray
+        backgroundColor: COLORS.semiLightGray,
+        //width: 300
     },
     button: {
         width: '90%',

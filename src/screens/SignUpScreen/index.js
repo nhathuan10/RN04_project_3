@@ -1,5 +1,5 @@
-import { StyleSheet, TouchableOpacity, Alert } from 'react-native'
-import React from 'react'
+import { StyleSheet, TouchableOpacity, Alert, Animated } from 'react-native'
+import React, { useEffect, useRef } from 'react'
 import { stackName } from '../../configs/navigationConstants'
 import { Text, Button, BackgroundView, TextInput, LoginForm } from '../../components'
 import { COLORS } from '../../themes'
@@ -7,7 +7,6 @@ import { Formik } from 'formik'
 import * as Yup from 'yup'
 import { useDispatch } from 'react-redux'
 import { setUserInfo } from '../../redux/actions/action'
-import { useSelector } from 'react-redux'
 
 const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -29,7 +28,9 @@ const validationSchema = Yup.object().shape({
 
 export default function SignUpScreen({ navigation }) {
     const dispatch = useDispatch();
-    const userInfo = useSelector(state => state.signUpReducer.userInfo)
+    const opacity = useRef(new Animated.Value(0)).current;
+    const translateX = useRef(new Animated.Value(-200)).current;
+
     const handleSubmit = (values) => {
         dispatch(setUserInfo(values));
         Alert.alert(
@@ -38,10 +39,24 @@ export default function SignUpScreen({ navigation }) {
             [{
                 text: 'Next',
                 onPress: () => navigation.navigate(stackName.loginStack)
-              }]
+            }]
         )
-        
     }
+
+    useEffect(() => {
+        Animated.parallel([
+            Animated.timing(opacity, {
+                toValue: 1,
+                duration: 1000,
+                useNativeDriver: true,
+            }),
+            Animated.timing(translateX, {
+                toValue: 0,
+                duration: 1200,
+                useNativeDriver: true,
+            }),
+        ]).start();
+    })
 
     return (
         <BackgroundView style={styles.container}>
@@ -52,7 +67,12 @@ export default function SignUpScreen({ navigation }) {
             >
                 {({ errors, values, touched, handleChange, handleSubmit, handleBlur }) => {
                     return (
-                        <LoginForm style={styles.loginForm}>
+                        <LoginForm style={{
+                            ...styles.loginForm,
+                            opacity,
+                            transform: [{ translateX }],
+                        }}
+                        >
                             <TextInput
                                 title='Email'
                                 placeholder='email@example.com'
