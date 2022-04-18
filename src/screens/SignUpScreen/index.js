@@ -1,10 +1,13 @@
-import { StyleSheet, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, TouchableOpacity, Alert } from 'react-native'
 import React from 'react'
 import { stackName } from '../../configs/navigationConstants'
 import { Text, Button, BackgroundView, TextInput, LoginForm } from '../../components'
 import { COLORS } from '../../themes'
 import { Formik } from 'formik'
-import *as Yup from 'yup'
+import * as Yup from 'yup'
+import { useDispatch } from 'react-redux'
+import { setUserInfo } from '../../redux/actions/action'
+import { useSelector } from 'react-redux'
 
 const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -25,9 +28,21 @@ const validationSchema = Yup.object().shape({
 })
 
 export default function SignUpScreen({ navigation }) {
-    const handleSubmit = () => {
-        console.log('huan');
+    const dispatch = useDispatch();
+    const userInfo = useSelector(state => state.signUpReducer.userInfo)
+    const handleSubmit = (values) => {
+        dispatch(setUserInfo(values));
+        Alert.alert(
+            'Congratulation!',
+            'You have successfully registered',
+            [{
+                text: 'Next',
+                onPress: () => navigation.navigate(stackName.loginStack)
+              }]
+        )
+        
     }
+
     return (
         <BackgroundView style={styles.container}>
             <Formik
@@ -43,6 +58,7 @@ export default function SignUpScreen({ navigation }) {
                                 placeholder='email@example.com'
                                 onChangeText={handleChange('email')}
                                 onBlur={handleBlur('email')}
+                                value={values.email}
                                 errMsg={errors.email}
                                 touched={touched.email}
                             />
@@ -53,6 +69,7 @@ export default function SignUpScreen({ navigation }) {
                                 secureTextEntry
                                 onChangeText={handleChange('password')}
                                 onBlur={handleBlur('password')}
+                                value={values.password}
                                 errMsg={errors.password}
                                 touched={touched.password}
                             />
@@ -61,6 +78,7 @@ export default function SignUpScreen({ navigation }) {
                                 placeholder='Huan Ba'
                                 onChangeText={handleChange('name')}
                                 onBlur={handleBlur('name')}
+                                value={values.name}
                                 errMsg={errors.name}
                                 touched={touched.name}
                             />
@@ -69,11 +87,12 @@ export default function SignUpScreen({ navigation }) {
                                 placeholder='091-xxx-xxxx'
                                 onChangeText={handleChange('phone')}
                                 onBlur={handleBlur('phone')}
+                                value={values.phone}
                                 errMsg={errors.phone}
                                 touched={touched.phone}
                                 keyboardType='numeric'
                             />
-                            <Button text='Sign Up' title style={styles.button} />
+                            <Button text='Sign Up' title style={styles.button} onPressSignUp={handleSubmit} />
                             <TouchableOpacity onPress={() => navigation.navigate(stackName.loginStack)}>
                                 <Text style={styles.text} >
                                     Already have an account ?
@@ -103,15 +122,3 @@ const styles = StyleSheet.create({
     }
 })
 
-{/* <LoginForm style={styles.loginForm}>
-                <TextInput title='Email' />
-                <TextInput title='Password' password secureTextEntry />
-                <TextInput title='Name' />
-                <TextInput title='Phone' />
-                <Button text='Sign Up' title style={styles.button} />
-                <TouchableOpacity onPress={() => navigation.navigate(stackName.loginStack)}>
-                    <Text style={styles.text} >
-                        Already have an account
-                    </Text>
-                </TouchableOpacity>
-            </LoginForm> */}

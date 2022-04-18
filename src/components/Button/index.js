@@ -4,14 +4,24 @@ import { COLORS } from '../../themes'
 import Text from '../Text'
 
 
-export default function Button({ text, style, title, header, normal, textStyle }) {
-    return (
-        <TouchableOpacity activeOpacity={0.3} style={{ ...styles.container, ...style }}>
-            {title && <Text title bold style={{ color: COLORS.lightGray, ...textStyle }}>{text}</Text>}
-            {header && <Text header bold style={{ color: COLORS.lightGray, ...textStyle }}>{text}</Text>}
-            {normal && <Text bold style={{ color: COLORS.lightGray, ...textStyle }}>{text}</Text>}
-        </TouchableOpacity>
-    )
+export default function Button({ text, style, title, header, normal, textStyle, onPressSignUp, onPressLogIn }) {
+    if (onPressSignUp) {
+        return (
+            <TouchableOpacity activeOpacity={0.3} style={{ ...styles.container, ...style }} onPress={onPressSignUp} >
+                {title && <Text title bold style={{ color: COLORS.lightGray, ...textStyle }}>{text}</Text>}
+                {header && <Text header bold style={{ color: COLORS.lightGray, ...textStyle }}>{text}</Text>}
+                {normal && <Text bold style={{ color: COLORS.lightGray, ...textStyle }}>{text}</Text>}
+            </TouchableOpacity>
+        )
+    } else if (onPressLogIn) {
+        return (
+            <TouchableOpacity activeOpacity={0.3} style={{ ...styles.container, ...style }} onPress={onPressLogIn} >
+                {title && <Text title bold style={{ color: COLORS.lightGray, ...textStyle }}>{text}</Text>}
+                {header && <Text header bold style={{ color: COLORS.lightGray, ...textStyle }}>{text}</Text>}
+                {normal && <Text bold style={{ color: COLORS.lightGray, ...textStyle }}>{text}</Text>}
+            </TouchableOpacity>
+        )
+    }
 }
 
 const styles = StyleSheet.create({

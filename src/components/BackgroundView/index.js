@@ -1,4 +1,4 @@
-import { StatusBar, StyleSheet, Text, View } from 'react-native'
+import { StatusBar, StyleSheet, Animated, View } from 'react-native'
 import React from 'react'
 import { COLORS } from '../../themes'
 
