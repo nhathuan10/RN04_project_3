@@ -40,7 +40,7 @@ export default function HomeScreen({ navigation }) {
                 data={listCategory}
                 renderItem={renderItem}
                 horizontal
-                ItemSeparatorComponent={() => <View style={{ width: 25 }}></View>}
+                ItemSeparatorComponent={() => <View style={{ width: 27 }}></View>}
                 style={{flexGrow: 0}}
                 showsHorizontalScrollIndicator={false}
             />
