@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 25,
-        elevation: 5,
     },
     image: {
         height: 160,
