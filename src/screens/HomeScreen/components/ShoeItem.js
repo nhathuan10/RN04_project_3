@@ -15,7 +15,7 @@ export default function ShoeItem({ item, index, Offset, opacity }) {
                     style={styles.image}
                 />
                 <Text title bold>{item.name}</Text>
-                <Text italic bold style={{color: COLORS.regularGray}}>$ {item.price}</Text>
+                <Text italic bold subText>$ {item.price}</Text>
                 <HeartIcon
                     name={(index % 2 == 0) ? 'heart' : 'hearto'}
                     size={25}
