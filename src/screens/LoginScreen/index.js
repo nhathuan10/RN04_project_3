@@ -4,7 +4,6 @@ import { stackName } from '../../configs/navigationConstants'
 import { BackgroundView, Button, LoginForm, TextInput } from '../../components'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { COLORS } from '../../themes'
 import { Text } from '../../components'
@@ -18,7 +17,6 @@ const validationSchema = Yup.object().shape({
 })
 
 export default function LoginScreen({ navigation }) {
-    const dispatch = useDispatch();
     const email = useSelector(state => state.signUpReducer.userInfo.email);
     const password = useSelector(state => state.signUpReducer.userInfo.password);
     const opacity = useRef(new Animated.Value(0)).current;
@@ -104,12 +102,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: COLORS.semiBoldGray,
-        //flex: 1
     },
     loginForm: {
         height: 400,
         backgroundColor: COLORS.semiLightGray,
-        //width: 300
     },
     button: {
         width: '90%',
