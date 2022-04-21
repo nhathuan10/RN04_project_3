@@ -28,6 +28,6 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         position: 'absolute',
         right: -45,
-        bottom: -25,
+        bottom: -35,
     }
 })

@@ -18,6 +18,8 @@ export default function HomeScreen({ navigation }) {
     const listCategory = useSelector(state => state.shoeReducer.listCategory);
     const listShoe = useSelector(state => state.shoeReducer.listShoe);
     const scrollY = useRef(new Animated.Value(0)).current;
+    const translateY = useRef(new Animated.Value(300)).current;
+    const opacityFlatList = useRef(new Animated.Value(0)).current;
     const dispatch = useDispatch();
 
     const onPressCategoryFocus = (item) => {
@@ -55,16 +57,32 @@ export default function HomeScreen({ navigation }) {
 
     useEffect(() => {
         dispatch(requestListCategory());
-    }, [])
+    }, []);
 
     useEffect(() => {
         dispatch(requestListShoe());
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        Animated.parallel([
+            Animated.timing(opacityFlatList, {
+                toValue: 1,
+                duration: 700,
+                useNativeDriver: true,
+            }),
+            Animated.timing(translateY, {
+                toValue: 0,
+                duration: 650,
+                useNativeDriver: true,
+            }),
+        ]).start();
+        console.log('animation');
+    }, [listShoe]);
 
     return (
         <BackgroundView style={styles.container}>
             <HeaderPanel />
-            <Header onPress={() => dispatch(requestListShoe())}/>
+            <Header onPress={() => dispatch(requestListShoe())} />
             <FlatList
                 data={listCategory}
                 renderItem={renderlistCategory}
@@ -81,7 +99,7 @@ export default function HomeScreen({ navigation }) {
                 data={listShoe}
                 renderItem={renderListShoe}
                 ItemSeparatorComponent={() => <View style={{ height: 20 }}></View>}
-                style={{ marginTop: 50}}
+                style={{ marginTop: 50, opacity: opacityFlatList, transform: [{ translateY }] }}
                 showsVerticalScrollIndicator={false}
             />
         </BackgroundView>

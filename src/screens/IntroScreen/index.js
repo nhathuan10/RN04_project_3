@@ -28,7 +28,7 @@ export default function IntroScreen({ navigation }) {
     }
 
     const onDone = () => {
-        navigation.navigate(stackName.signUpStack)
+        navigation.navigate(stackName.homeStack)
     }
 
     return (

@@ -56,7 +56,7 @@ export default function SignUpScreen({ navigation }) {
                 useNativeDriver: true,
             }),
         ]).start();
-    })
+    }, [])
 
     return (
         <BackgroundView style={styles.container}>

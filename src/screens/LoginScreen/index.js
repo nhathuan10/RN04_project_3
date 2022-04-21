@@ -46,7 +46,7 @@ export default function LoginScreen({ navigation }) {
                 useNativeDriver: true,
             }),
         ]).start();
-    })
+    }, [])
 
     return (
         <BackgroundView style={styles.container}>

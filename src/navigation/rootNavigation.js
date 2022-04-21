@@ -13,11 +13,11 @@ const Stack = createNativeStackNavigator();
 export default function RootNavigation() {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-            {/* <Stack.Screen
+            <Stack.Screen
                 name={stackName.introStack}
                 component={IntroScreen} 
             />
-            <Stack.Screen
+            {/* <Stack.Screen
                 name={stackName.signUpStack}
                 component={SignUpScreen} 
             />
