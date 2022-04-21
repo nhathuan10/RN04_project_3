@@ -1,9 +1,9 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import thunk from 'redux-thunk';
 import signUpReducer from "./reducers/signUpReducer";
-import listCategoryReducer from "./reducers/listCategoryReducer";
+import shoeReducer from "./reducers/shoeReducer";
 
-const rootReducers = combineReducers({ signUpReducer, listCategoryReducer });
+const rootReducers = combineReducers({ signUpReducer, shoeReducer });
 
 const store = createStore(rootReducers, applyMiddleware(thunk));
 

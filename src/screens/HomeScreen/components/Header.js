@@ -1,11 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { COLORS } from '../../../themes'
 import ShoeIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 
-export default function Header() {
+export default function Header({onPress}) {
     return (
-        <View
+        <TouchableOpacity 
+            onPress={onPress}
             style={{
                 backgroundColor: COLORS.main,
                 height: 60,
@@ -16,7 +17,7 @@ export default function Header() {
             }}
         >
             <ShoeIcon name='shoe-sneaker' size={50} color={COLORS.lightGray} />
-        </View>
+        </TouchableOpacity>
     )
 }
 
