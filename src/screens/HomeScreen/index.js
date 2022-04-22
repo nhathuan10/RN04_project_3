@@ -75,12 +75,12 @@ export default function HomeScreen({ navigation }) {
             Animated.parallel([
                 Animated.timing(opacityFlatList, {
                     toValue: 1,
-                    duration: 650,
+                    duration: 600,
                     useNativeDriver: true,
                 }),
                 Animated.timing(translateY, {
                     toValue: 0,
-                    duration: 650,
+                    duration: 600,
                     useNativeDriver: true,
                 }),
             ])
