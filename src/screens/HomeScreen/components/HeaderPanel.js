@@ -14,7 +14,7 @@ export default function HeaderPanel() {
 const styles = StyleSheet.create({
     bigItem: {
         backgroundColor: COLORS.main,
-        height: "35%",
+        height: 240,
         position: 'absolute',
         top: 0,
         left: 0,

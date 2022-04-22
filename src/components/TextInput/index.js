@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { COLORS } from '../../themes/'
 import PassIcon from 'react-native-vector-icons/Entypo'
 import Text from '../../components/Text'
+import SearchIcon from 'react-native-vector-icons/FontAwesome5'
 
 export default function TextInput(props) {
     const [secureTextEntry, setSecureTextEntry] = useState(props.secureTextEntry);
@@ -14,10 +15,10 @@ export default function TextInput(props) {
     const isShowError = !!props.errMsg && props.touched;
 
     return (
-        <View style={styles.container}>
+        <View style={{...styles.container, ...props.style}}>
             <TEXTINPUT
                 {...props}
-                style={[styles.textInput, isShowError && styles.error]}
+                style={[styles.textInput, isShowError && styles.error, {...props.styleInput}]}
                 secureTextEntry={secureTextEntry}
             />
             <Text style={styles.title} bold>{props.title}</Text>
@@ -34,6 +35,11 @@ export default function TextInput(props) {
                 <View style={{ width: '90%'}}>
                     <Text style={styles.errorText} italic>* {props.errMsg}</Text>
                 </View>
+            )}
+            {props.icon && (
+                <TouchableOpacity style={styles.searchIcon}>
+                    <SearchIcon name='search' size={25} />
+                </TouchableOpacity>
             )}
         </View>
     )
@@ -54,7 +60,6 @@ const styles = StyleSheet.create({
         color: COLORS.semiBoldGray,
         fontSize: 17,
         padding: 12,
-        width: '90%',
         backgroundColor: COLORS.lightGray,
         fontFamily: 'Nunito-Bold',
     },
@@ -80,5 +85,11 @@ const styles = StyleSheet.create({
     },
     errorText: {
         color: COLORS.red,
+    },
+    searchIcon: {
+        position: 'absolute',
+        top: 15,
+        right: 15,
+        color: COLORS.main
     }
 })

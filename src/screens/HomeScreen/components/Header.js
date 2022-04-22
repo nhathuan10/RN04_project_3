@@ -10,8 +10,8 @@ export default function Header({onPress}) {
             style={{
                 backgroundColor: COLORS.main,
                 height: 60,
-                flexDirection: 'row',
-                justifyContent: 'flex-end',
+                width: 60,
+                justifyContent: 'center',
                 alignItems: 'center',
                 paddingHorizontal: 5
             }}

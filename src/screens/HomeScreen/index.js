@@ -10,6 +10,8 @@ import CategoryItem from './components/CategoryItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { requestListCategory, requestListShoe, requestListShoeByCategory } from '../../redux/thunk/actionThunk'
 import ShoeItem from './components/ShoeItem'
+import {TextInput} from '../../components'
+import HeaderContainer from './components/HeaderContainer'
 
 const { height } = Dimensions.get("screen");
 
@@ -82,7 +84,7 @@ export default function HomeScreen({ navigation }) {
     return (
         <BackgroundView style={styles.container}>
             <HeaderPanel />
-            <Header onPress={() => dispatch(requestListShoe())} />
+            <HeaderContainer />
             <FlatList
                 data={listCategory}
                 renderItem={renderlistCategory}
@@ -99,7 +101,7 @@ export default function HomeScreen({ navigation }) {
                 data={listShoe}
                 renderItem={renderListShoe}
                 ItemSeparatorComponent={() => <View style={{ height: 20 }}></View>}
-                style={{ marginTop: 50, opacity: opacityFlatList, transform: [{ translateY }] }}
+                style={{ marginTop: 20, flexShrink: 4, opacity: opacityFlatList, transform: [{ translateY }] }}
                 showsVerticalScrollIndicator={false}
             />
         </BackgroundView>
