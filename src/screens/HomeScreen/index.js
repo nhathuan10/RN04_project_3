@@ -19,7 +19,7 @@ export default function HomeScreen({ navigation }) {
     const listCategory = useSelector(state => state.shoeReducer.listCategory);
     const listShoe = useSelector(state => state.shoeReducer.listShoe);
     const scrollY = useRef(new Animated.Value(0)).current;
-    const translateX = useRef(new Animated.Value(300)).current;
+    const translateX = useRef(new Animated.Value(250)).current;
     const translateY = useRef(new Animated.Value(300)).current;
     const opacityFlatList = useRef(new Animated.Value(0)).current;
     const dispatch = useDispatch();
@@ -66,25 +66,26 @@ export default function HomeScreen({ navigation }) {
     }, []);
 
     useEffect(() => {
-        Animated.parallel([
-            Animated.timing(opacityFlatList, {
-                toValue: 1,
-                duration: 650,
-                useNativeDriver: true,
-            }),
-            Animated.timing(translateY, {
-                toValue: 0,
-                duration: 650,
-                useNativeDriver: true,
-            }),
+        Animated.sequence([
             Animated.timing(translateX, {
                 toValue: 0,
-                duration: 650,
+                duration: 400,
                 useNativeDriver: true,
             }),
+            Animated.parallel([
+                Animated.timing(opacityFlatList, {
+                    toValue: 1,
+                    duration: 650,
+                    useNativeDriver: true,
+                }),
+                Animated.timing(translateY, {
+                    toValue: 0,
+                    duration: 500,
+                    useNativeDriver: true,
+                }),
+            ])
         ]).start();
-        console.log('animation');
-    }, [listShoe]);
+    })
 
     return (
         <BackgroundView style={styles.container}>
@@ -95,7 +96,7 @@ export default function HomeScreen({ navigation }) {
                 renderItem={renderlistCategory}
                 horizontal
                 ItemSeparatorComponent={() => <View style={{ width: 27 }}></View>}
-                style={{ flexGrow: 0, transform: [{ translateX }], opacity: opacityFlatList }}
+                style={{ flexGrow: 0, transform: [{ translateX }]}}
                 showsHorizontalScrollIndicator={false}
             />
             <Animated.FlatList
@@ -116,3 +117,4 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
 
 })
+
