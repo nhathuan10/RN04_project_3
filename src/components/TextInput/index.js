@@ -13,7 +13,7 @@ export default function TextInput(props) {
         setIsPassWordNotShown(!isPassWordNotShown);
     }
     const isShowError = !!props.errMsg && props.touched;
-
+    
     return (
         <View style={{...styles.container, ...props.style}}>
             <TEXTINPUT
@@ -37,7 +37,7 @@ export default function TextInput(props) {
                 </View>
             )}
             {props.icon && (
-                <TouchableOpacity style={styles.searchIcon}>
+                <TouchableOpacity style={styles.searchIcon} onPress={props.onPressSearchShoe} >
                     <SearchIcon name='search' size={25} />
                 </TouchableOpacity>
             )}

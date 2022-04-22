@@ -10,7 +10,6 @@ import CategoryItem from './components/CategoryItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { requestListCategory, requestListShoe, requestListShoeByCategory } from '../../redux/thunk/actionThunk'
 import ShoeItem from './components/ShoeItem'
-import {TextInput} from '../../components'
 import HeaderContainer from './components/HeaderContainer'
 
 const { height } = Dimensions.get("screen");
@@ -20,6 +19,7 @@ export default function HomeScreen({ navigation }) {
     const listCategory = useSelector(state => state.shoeReducer.listCategory);
     const listShoe = useSelector(state => state.shoeReducer.listShoe);
     const scrollY = useRef(new Animated.Value(0)).current;
+    const translateX = useRef(new Animated.Value(300)).current;
     const translateY = useRef(new Animated.Value(300)).current;
     const opacityFlatList = useRef(new Animated.Value(0)).current;
     const dispatch = useDispatch();
@@ -69,10 +69,15 @@ export default function HomeScreen({ navigation }) {
         Animated.parallel([
             Animated.timing(opacityFlatList, {
                 toValue: 1,
-                duration: 700,
+                duration: 650,
                 useNativeDriver: true,
             }),
             Animated.timing(translateY, {
+                toValue: 0,
+                duration: 650,
+                useNativeDriver: true,
+            }),
+            Animated.timing(translateX, {
                 toValue: 0,
                 duration: 650,
                 useNativeDriver: true,
@@ -84,13 +89,13 @@ export default function HomeScreen({ navigation }) {
     return (
         <BackgroundView style={styles.container}>
             <HeaderPanel />
-            <HeaderContainer />
-            <FlatList
+            <HeaderContainer listShoe={listShoe} />
+            <Animated.FlatList
                 data={listCategory}
                 renderItem={renderlistCategory}
                 horizontal
                 ItemSeparatorComponent={() => <View style={{ width: 27 }}></View>}
-                style={{ flexGrow: 0 }}
+                style={{ flexGrow: 0, transform: [{ translateX }], opacity: opacityFlatList }}
                 showsHorizontalScrollIndicator={false}
             />
             <Animated.FlatList
@@ -101,7 +106,7 @@ export default function HomeScreen({ navigation }) {
                 data={listShoe}
                 renderItem={renderListShoe}
                 ItemSeparatorComponent={() => <View style={{ height: 20 }}></View>}
-                style={{ marginTop: 20, flexShrink: 4, opacity: opacityFlatList, transform: [{ translateY }] }}
+                style={{ marginTop: 20, flexShrink: 3, opacity: opacityFlatList, transform: [{ translateY }] }}
                 showsVerticalScrollIndicator={false}
             />
         </BackgroundView>
