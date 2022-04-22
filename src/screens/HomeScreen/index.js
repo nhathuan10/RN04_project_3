@@ -69,7 +69,7 @@ export default function HomeScreen({ navigation }) {
         Animated.sequence([
             Animated.timing(translateX, {
                 toValue: 0,
-                duration: 400,
+                duration: 500,
                 useNativeDriver: true,
             }),
             Animated.parallel([
@@ -80,7 +80,7 @@ export default function HomeScreen({ navigation }) {
                 }),
                 Animated.timing(translateY, {
                     toValue: 0,
-                    duration: 500,
+                    duration: 650,
                     useNativeDriver: true,
                 }),
             ])
