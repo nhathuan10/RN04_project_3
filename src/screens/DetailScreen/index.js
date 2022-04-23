@@ -53,8 +53,8 @@ export default function DetailScreen({ navigation, route }) {
         )
     }
 
-    const onPressAddToCart = () => {
-        navigation.navigate(stackName.cartStack);
+    const onPressAddToCart = (shoe) => {
+        navigation.navigate(stackName.cartStack, {shoe});
     }
 
     useEffect(() => {
@@ -104,7 +104,7 @@ export default function DetailScreen({ navigation, route }) {
                 showsHorizontalScrollIndicator={false}
                 style={{ flexGrow: 0, transform: [{ translateY: translateYFlatList }], opacity }}
             />
-            <Button text='ADD TO CART' normal onPressAddToCart={onPressAddToCart} />
+            <Button text='ADD TO CART' normal onPressAddToCart={() => onPressAddToCart(shoe)} />
         </BackgroundView>
     )
 }
