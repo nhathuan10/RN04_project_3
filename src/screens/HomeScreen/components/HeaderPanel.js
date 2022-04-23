@@ -3,10 +3,12 @@ import React from 'react'
 import { BackgroundView } from '../../../components'
 import { COLORS } from '../../../themes'
 
-export default function HeaderPanel() {
+export default function HeaderPanel({style, smallItem}) {
     return (
-        <View style={styles.bigItem}>
-            <View style={styles.smallItem}></View>
+        <View style={{...styles.bigItem, ...style}}>
+            {smallItem && (
+                <View style={styles.smallItem}></View>
+            )}
         </View>
     )
 }

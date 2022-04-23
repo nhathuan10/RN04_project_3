@@ -25,7 +25,7 @@ export default function HomeScreen({ navigation }) {
     const dispatch = useDispatch();
 
     const goToDetail = (id) => {
-        navigation.navigate(stackName.detailStack, {id});
+        navigation.navigate(stackName.detailStack, { id });
     }
     const onPressCategoryFocus = (item) => {
         setCategoryFocus(item.category);
@@ -56,12 +56,12 @@ export default function HomeScreen({ navigation }) {
             outputRange: [0, 0, 0, 1500],
         });
         return (
-            <ShoeItem 
-                item={item} 
-                Offset={Offset} 
-                opacity={opacity} 
+            <ShoeItem
+                item={item}
+                Offset={Offset}
+                opacity={opacity}
                 index={index}
-                onPress={() => goToDetail(item.id)} 
+                onPress={() => goToDetail(item.id)}
             />
         )
     }
@@ -75,37 +75,35 @@ export default function HomeScreen({ navigation }) {
     }, []);
 
     useEffect(() => {
-        Animated.sequence([
-            Animated.timing(translateX, {
-                toValue: 0,
-                duration: 500,
+        Animated.parallel([
+            Animated.timing(opacityFlatList, {
+                toValue: 1,
+                duration: 750,
                 useNativeDriver: true,
             }),
-            Animated.parallel([
-                Animated.timing(opacityFlatList, {
-                    toValue: 1,
-                    duration: 600,
-                    useNativeDriver: true,
-                }),
-                Animated.timing(translateY, {
-                    toValue: 0,
-                    duration: 600,
-                    useNativeDriver: true,
-                }),
-            ])
+            Animated.timing(translateY, {
+                toValue: 0,
+                duration: 750,
+                useNativeDriver: true,
+            }),
+            Animated.timing(translateX, {
+                toValue: 0,
+                duration: 750,
+                useNativeDriver: true,
+            }),
         ]).start();
     })
 
     return (
         <BackgroundView style={styles.container}>
-            <HeaderPanel />
+            <HeaderPanel smallItem />
             <HeaderContainer listShoe={listShoe} />
             <Animated.FlatList
                 data={listCategory}
                 renderItem={renderlistCategory}
                 horizontal
                 ItemSeparatorComponent={() => <View style={{ width: 27 }}></View>}
-                style={{ flexGrow: 0, transform: [{ translateX }]}}
+                style={{ flexGrow: 0, transform: [{ translateX }], opacity: opacityFlatList }}
                 showsHorizontalScrollIndicator={false}
             />
             <Animated.FlatList
