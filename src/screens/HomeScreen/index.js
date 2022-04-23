@@ -24,6 +24,9 @@ export default function HomeScreen({ navigation }) {
     const opacityFlatList = useRef(new Animated.Value(0)).current;
     const dispatch = useDispatch();
 
+    const goToDetail = (id) => {
+        navigation.navigate(stackName.detailStack, {id});
+    }
     const onPressCategoryFocus = (item) => {
         setCategoryFocus(item.category);
         dispatch(requestListShoeByCategory(item.id));
@@ -53,7 +56,13 @@ export default function HomeScreen({ navigation }) {
             outputRange: [0, 0, 0, 1500],
         });
         return (
-            <ShoeItem item={item} Offset={Offset} opacity={opacity} index={index} />
+            <ShoeItem 
+                item={item} 
+                Offset={Offset} 
+                opacity={opacity} 
+                index={index}
+                onPress={() => goToDetail(item.id)} 
+            />
         )
     }
 

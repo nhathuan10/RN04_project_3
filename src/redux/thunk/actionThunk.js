@@ -1,5 +1,10 @@
 import axios from 'axios'
-import { requestListCategorySuccess, requestListShoeByCategorySuccess, requestListShoeSuccess } from '../actions/action';
+import {
+    requestDetailShoeSuccess,
+    requestListCategorySuccess,
+    requestListShoeByCategorySuccess,
+    requestListShoeSuccess
+} from '../actions/action';
 
 export const requestListCategory = () => {
     return async dispatch => {
@@ -45,3 +50,19 @@ export const requestListShoeByCategory = (categoryId) => {
         }
     }
 }
+
+export const requestDetailShoe = (id) => {
+    return async dispatch => {
+        try {
+            const res = await axios({
+                method: 'GET',
+                url: `http://svcy3.myclass.vn/api/Product/getbyid?id=${id}`
+            })
+            const shoe = res.data.content;
+            dispatch(requestDetailShoeSuccess(shoe))
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}
+

@@ -4,9 +4,9 @@ import { COLORS } from '../../../themes'
 import HeartIcon from 'react-native-vector-icons/AntDesign'
 import { Text } from '../../../components'
 
-export default function ShoeItem({ item, index, Offset, opacity }) {
+export default function ShoeItem({ item, index, Offset, opacity, onPress }) {
     return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onPress}>
             <Animated.View
                 style={{ ...styles.container, transform: [{ translateX: Offset }], opacity: opacity }}
             >
