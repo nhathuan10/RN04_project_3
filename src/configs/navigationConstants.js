@@ -4,6 +4,7 @@ const stackName = {
     introStack: 'IntroStack',
     loginStack: 'LoginStack',
     signUpStack: 'SignUpStack',
+    cartStack: 'CartStack',
 }
 
 const tabName = {

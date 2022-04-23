@@ -1,12 +1,15 @@
 import { Image, StyleSheet, View, TouchableOpacity, FlatList, Animated } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
-import { BackgroundView, Text } from '../../components'
+import { BackgroundView, Button, Text } from '../../components'
 import { useDispatch, useSelector } from 'react-redux'
 import { requestDetailShoe } from '../../redux/thunk/actionThunk'
 import HeaderPanel from '../HomeScreen/components/HeaderPanel'
 import { COLORS } from '../../themes'
 import BackIcon from 'react-native-vector-icons/AntDesign'
 import { template } from '@babel/core'
+import { stackName } from '../../configs/navigationConstants'
+import SizeItem from './components/SizeItem'
+import RelatedProductItem from './components/RelatedProductItem'
 
 
 export default function DetailScreen({ navigation, route }) {
@@ -18,6 +21,18 @@ export default function DetailScreen({ navigation, route }) {
         inputRange: [0, 1],
         outputRange: [-200, 0]
     })
+    const translateX = translateY.interpolate({
+        inputRange: [-200, 0],
+        outputRange: [-200, 0]
+    })
+    const translateX2 = translateY.interpolate({
+        inputRange: [-200, 0],
+        outputRange: [200, 0]
+    })
+    const translateYFlatList = opacity.interpolate({
+        inputRange: [0, 1],
+        outputRange: [250, 0]
+    })
     const rotate = translateY.interpolate({
         inputRange: [-200, 0],
         outputRange: ['360deg', '-25deg']
@@ -28,35 +43,18 @@ export default function DetailScreen({ navigation, route }) {
 
     const renderSize = ({ item }) => {
         return (
-            <TouchableOpacity
-                style={{
-                    marginHorizontal: 10,
-                    backgroundColor: (sizeFocus === item) ? COLORS.main : null,
-                    padding: 5,
-                    borderRadius: 8,
-                }}
-                onPress={() => onPressSizeFocus(item)}
-            >
-                <Text
-                    style={{
-                        color: (sizeFocus === item) ? COLORS.lightGray : null,
-                    }}
-                >
-                    {item}
-                </Text>
-            </TouchableOpacity>
+            <SizeItem item={item} sizeFocus={sizeFocus} onPressSizeFocus={onPressSizeFocus} />
         )
     }
 
     const renderRelatedProducts = ({ item }) => {
         return (
-            <TouchableOpacity>
-                <Image
-                    source={{ uri: item.image }}
-                    style={{ height: 170, width: 200 }}
-                />
-            </TouchableOpacity>
+            <RelatedProductItem item={item} />
         )
+    }
+
+    const onPressAddToCart = () => {
+        navigation.navigate(stackName.cartStack);
     }
 
     useEffect(() => {
@@ -73,58 +71,62 @@ export default function DetailScreen({ navigation, route }) {
 
     return (
         <BackgroundView>
-            <HeaderPanel style={{ backgroundColor: COLORS.semiLightGray }} />
+            <HeaderPanel style={styles.headerPanel} />
             <TouchableOpacity onPress={() => navigation.goBack()}>
                 <BackIcon name='back' size={35} color={COLORS.boldGray} />
             </TouchableOpacity>
-            {/* <Animated.View style={{transform: [{ translateY }]}}> */}
             <Animated.Image
                 source={{ uri: shoe.image }}
-                style={{
-                    height: 320,
-                    width: 320,
-                    alignSelf: 'center',
-                    opacity,
-                    transform: [{ translateY }, { rotate }]
-                    //backgroundColor: 'red'
-                }}
+                style={{ ...styles.logo, opacity, transform: [{ translateY }, { rotate }] }}
             />
-            {/* </Animated.View> */}
-            <View
-                style={{
-                    flexDirection: 'row',
-                    width: '100%',
-                    flexWrap: 'wrap',
-                    justifyContent: 'space-between',
-                    marginBottom: 15,
-                }}
-            >
+            <View style={styles.info}>
                 <Text title bold>{shoe.name}</Text>
                 <Text title subText>$ {shoe.price}</Text>
             </View>
-            <Animated.Text subText style={{opacity}}>{shoe.shortDescription}</Animated.Text>
-            <View style={{ flexDirection: 'row', marginTop: 5 }}>
-                <Text bold style={{ paddingVertical: 5 }}>SIZE</Text>
+            <Animated.View style={{ opacity, transform: [{ translateX: translateX2 }] }}>
+                <Text italic subText>{shoe.description}</Text>
+            </Animated.View>
+            <Animated.View style={{ flexDirection: 'row', transform: [{ translateX }], opacity, marginTop: -25 }}>
+                <Text bold style={{ paddingVertical: 5, fontSize: 20 }}>SIZE</Text>
                 <FlatList
                     data={shoe.size}
                     renderItem={renderSize}
                     horizontal
                     showsHorizontalScrollIndicator={false}
                 />
-            </View>
-            <Text title bold style={{ marginTop: 20 }}>Related Products</Text>
-            <FlatList
+            </Animated.View>
+            <Text title italic style={{ marginTop: 10 }}>Related Products</Text>
+            <Animated.FlatList
                 data={shoe.relatedProducts}
                 renderItem={renderRelatedProducts}
                 horizontal
                 ItemSeparatorComponent={() => <View style={{ width: 30 }}></View>}
                 showsHorizontalScrollIndicator={false}
-                style={{ flexGrow: 0 }}
+                style={{ flexGrow: 0, transform: [{ translateY: translateYFlatList }], opacity }}
             />
-
+            <Button text='ADD TO CART' normal onPressAddToCart={onPressAddToCart} />
         </BackgroundView>
     )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    headerPanel: {
+        backgroundColor: COLORS.semiLightGray,
+        height: 200
+    },
+    logo: {
+        height: 320,
+        width: 320,
+        alignSelf: 'center',
+        marginTop: -30
+    },
+    info: {
+        flexDirection: 'row',
+        width: '100%',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        marginBottom: 15,
+        marginTop: -30,
+    }
+})
 

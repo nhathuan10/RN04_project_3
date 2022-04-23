@@ -7,6 +7,7 @@ import DetailScreen from '../screens/DetailScreen';
 import IntroScreen from '../screens/IntroScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import LoginScreen from '../screens/LoginScreen';
+import CartScreen from '../screens/CartScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,10 @@ export default function RootNavigation() {
             <Stack.Screen
                 name={stackName.detailStack}
                 component={DetailScreen} 
+            />
+            <Stack.Screen
+                name={stackName.cartStack}
+                component={CartScreen} 
             />
         </Stack.Navigator>
     )
