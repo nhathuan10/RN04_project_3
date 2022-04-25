@@ -64,7 +64,7 @@ export default function DetailScreen({ navigation, route }) {
     useEffect(() => {
         Animated.timing(opacity, {
             toValue: 1,
-            duration: 300,
+            duration: 500,
             useNativeDriver: true
         }).start();
     })
