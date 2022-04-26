@@ -9,10 +9,11 @@ export default function ModalItem({ relatedProduct, backFromRelatedProduct }) {
             <View style={styles.subContainer}>
                 <Image
                     source={{ uri: relatedProduct.image }}
-                    style={{ height: 200, width: 250 }}
+                    style={{ height: 200, width: 250, marginTop: -20 }}
                 />
                 <Text title bold>{relatedProduct.name}</Text>
                 <Text subText>$ {relatedProduct.price}</Text>
+                <Text>$ {relatedProduct.shortDescription}</Text>
             </View>
             <TouchableOpacity onPress={backFromRelatedProduct} style={styles.button}>
                 <Text header italic bold style={{ color: COLORS.semiBoldGray, opacity: 0.8 }}>Back</Text>
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         borderTopLeftRadius: 60,
-        borderTopRightRadius: 60
+        borderTopRightRadius: 60,
     },
     subContainer: {
         flex: 1,

@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
     },
     subText: {
-        opacity: 0.5
+        opacity: 0.6
     },
     italic: {
         fontStyle : 'italic',

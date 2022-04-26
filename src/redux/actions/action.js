@@ -4,6 +4,7 @@ export const REQUEST_LIST_SHOE_SUCCESS = 'REQUEST_LIST_SHOE_SUCCESS';
 export const REQUEST_LIST_SHOE_BYCATEGORY_SUCCESS = 'REQUEST_LIST_SHOE_BYCATEGORY_SUCCESS';
 export const REQUEST_SEARCH_SHOE = 'REQUEST_SEARCH_SHOE';
 export const REQUEST_DETAIL_SHOE_SUCCESS = 'REQUEST_DETAIL_SHOE_SUCCESS';
+export const REQUEST_CART_LIST_SHOE = 'REQUEST_CART_LIST_SHOE';
 
 export const setUserInfo = (payload) => {
     return {
@@ -43,6 +44,13 @@ export const requestSeachShoe = (payload) => {
 export const requestDetailShoeSuccess = (payload) => {
     return {
         type: REQUEST_DETAIL_SHOE_SUCCESS,
+        payload
+    }
+}
+
+export const requestCartListShoe = (payload) => {
+    return {
+        type: REQUEST_CART_LIST_SHOE,
         payload
     }
 }

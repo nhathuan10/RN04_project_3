@@ -1,4 +1,5 @@
 import {
+    REQUEST_CART_LIST_SHOE,
     REQUEST_DETAIL_SHOE_SUCCESS,
     REQUEST_LIST_CATEGORY_SUCCESS,
     REQUEST_LIST_SHOE_BYCATEGORY_SUCCESS,
@@ -10,7 +11,8 @@ import {
 const initialState = {
     listCategory: [],
     listShoe: [],
-    shoe: {}
+    shoe: {},
+    cartListShoe: []
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -25,6 +27,8 @@ export default (state = initialState, { type, payload }) => {
             return { ...state, listShoe: payload }
         case REQUEST_DETAIL_SHOE_SUCCESS:
             return {...state, shoe: payload}
+        case REQUEST_CART_LIST_SHOE: 
+            return {...state, cartListShoe: payload}
         default:
             return state;
     }

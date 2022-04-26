@@ -4,7 +4,7 @@ import { COLORS } from '../../themes'
 import Text from '../Text'
 
 
-export default function Button({ text, style, title, header, normal, textStyle, onPressSignUp, onPressLogIn, onPressAddToCart }) {
+export default function Button({ text, style, title, header, normal, textStyle, onPressSignUp, onPressLogIn, onPressAddToCart, onPressCheckout }) {
     if (onPressSignUp) {
         return (
             <TouchableOpacity activeOpacity={0.3} style={{ ...styles.container, ...style }} onPress={onPressSignUp} >
@@ -24,6 +24,14 @@ export default function Button({ text, style, title, header, normal, textStyle, 
     } else if (onPressAddToCart){
         return (
             <TouchableOpacity activeOpacity={0.3} style={{ ...styles.container, ...style }} onPress={onPressAddToCart} >
+                {title && <Text title bold style={{ color: COLORS.lightGray, ...textStyle }}>{text}</Text>}
+                {header && <Text header bold style={{ color: COLORS.lightGray, ...textStyle }}>{text}</Text>}
+                {normal && <Text bold style={{ color: COLORS.lightGray, ...textStyle }}>{text}</Text>}
+            </TouchableOpacity>
+        )
+    }else if (onPressCheckout){
+        return (
+            <TouchableOpacity activeOpacity={0.3} style={{ ...styles.container, ...style }} onPress={onPressCheckout} >
                 {title && <Text title bold style={{ color: COLORS.lightGray, ...textStyle }}>{text}</Text>}
                 {header && <Text header bold style={{ color: COLORS.lightGray, ...textStyle }}>{text}</Text>}
                 {normal && <Text bold style={{ color: COLORS.lightGray, ...textStyle }}>{text}</Text>}
