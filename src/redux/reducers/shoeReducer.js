@@ -27,11 +27,11 @@ export default (state = initialState, { type, payload }) => {
         case REQUEST_SEARCH_SHOE:
             return { ...state, listShoe: payload }
         case REQUEST_DETAIL_SHOE_SUCCESS:
-            return {...state, shoe: payload}
-        case REQUEST_CART_LIST_SHOE_SUCCESS: 
-            return {...state, cartListShoe: [...state.cartListShoe, payload]};
+            return { ...state, shoe: payload }
+        case REQUEST_CART_LIST_SHOE_SUCCESS:
+            return { ...state, cartListShoe: [...state.cartListShoe, payload] };
         case REQUEST_CART_LIST_SHOE_AFTER_DELETE:
-            return {...state, cartListShoe: payload}
+            return { ...state, cartListShoe: payload }
         default:
             return state;
     }

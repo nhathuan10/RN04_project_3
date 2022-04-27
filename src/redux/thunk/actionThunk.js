@@ -76,7 +76,7 @@ export const requestCartListShoe = (item) => {
                 url: `http://svcy3.myclass.vn/api/Product/getbyid?id=${item.id}`
             })
             const shoe = res.data.content;
-            dispatch(requestCartListShoeSuccess({...shoe, size: item.size}))
+            dispatch(requestCartListShoeSuccess({ ...shoe, size: item.size }))
         } catch (err) {
             console.log(err);
         }
