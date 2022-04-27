@@ -13,12 +13,12 @@ export default function TextInput(props) {
         setIsPassWordNotShown(!isPassWordNotShown);
     }
     const isShowError = !!props.errMsg && props.touched;
-    
+
     return (
-        <View style={{...styles.container, ...props.style}}>
+        <View style={{ ...styles.container, ...props.style }}>
             <TEXTINPUT
                 {...props}
-                style={[styles.textInput, isShowError && styles.error, {...props.styleInput}]}
+                style={[styles.textInput, isShowError && styles.error, { ...props.styleInput }]}
                 secureTextEntry={secureTextEntry}
             />
             <Text style={styles.title} bold>{props.title}</Text>
@@ -32,7 +32,7 @@ export default function TextInput(props) {
                 </TouchableOpacity>
             )}
             {isShowError && (
-                <View style={{ width: '90%'}}>
+                <View style={{ width: '90%' }}>
                     <Text style={styles.errorText} italic>* {props.errMsg}</Text>
                 </View>
             )}

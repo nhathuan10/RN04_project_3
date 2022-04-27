@@ -1,13 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import HomeTab from './Tab/HomeTab';
 import { stackName } from '../configs/navigationConstants';
-import DetailScreen from '../screens/DetailScreen';
-import IntroScreen from '../screens/IntroScreen';
-import SignUpScreen from '../screens/SignUpScreen';
-import LoginScreen from '../screens/LoginScreen';
-import CartScreen from '../screens/CartScreen';
+import Screen from '../screens';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,27 +12,27 @@ export default function RootNavigation() {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             {/* <Stack.Screen
                 name={stackName.introStack}
-                component={IntroScreen} 
+                component={Screen.IntroScreen} 
             /> */}
             {/* <Stack.Screen
                 name={stackName.signUpStack}
-                component={SignUpScreen} 
+                component={Screen.SignUpScreen} 
             />
             <Stack.Screen
                 name={stackName.loginStack}
-                component={LoginScreen} 
+                component={Screen.LoginScreen} 
             /> */}
             <Stack.Screen
                 name={stackName.homeStack}
-                component={HomeTab} 
+                component={HomeTab}
             />
             <Stack.Screen
                 name={stackName.detailStack}
-                component={DetailScreen} 
+                component={Screen.DetailScreen}
             />
             <Stack.Screen
                 name={stackName.cartStack}
-                component={CartScreen} 
+                component={Screen.CartScreen}
             />
         </Stack.Navigator>
     )

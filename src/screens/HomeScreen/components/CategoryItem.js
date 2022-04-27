@@ -1,10 +1,10 @@
-import { StyleSheet, TouchableOpacity} from 'react-native'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { Text } from '../../../components'
 import { COLORS } from '../../../themes'
 
-export default function CategoryItem({item, onPressCategoryFocus, categoryFocus}) {
-    
+export default function CategoryItem({ item, onPressCategoryFocus, categoryFocus }) {
+
     return (
         <TouchableOpacity
             onPress={onPressCategoryFocus}

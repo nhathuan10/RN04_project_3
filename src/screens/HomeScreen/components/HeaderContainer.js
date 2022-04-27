@@ -6,13 +6,15 @@ import { requestListShoe } from '../../../redux/thunk/actionThunk'
 import { useDispatch } from 'react-redux'
 import { requestSeachShoe } from '../../../redux/actions/action'
 
-export default function HeaderContainer({ listShoe }) { 
+export default function HeaderContainer({ listShoe }) {
     const dispatch = useDispatch();
     const [text, setText] = useState('');
+
     const onPressSearchShoe = () => {
         const searchShoes = listShoe.filter(shoe => shoe.name.includes(text));
         dispatch(requestSeachShoe(searchShoes));
     }
+
     return (
         <View
             style={styles.container}

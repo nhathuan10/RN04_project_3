@@ -3,9 +3,9 @@ import React from 'react'
 import { BackgroundView } from '../../../components'
 import { COLORS } from '../../../themes'
 
-export default function HeaderPanel({style, smallItem}) {
+export default function HeaderPanel({ style, smallItem }) {
     return (
-        <View style={{...styles.bigItem, ...style}}>
+        <View style={{ ...styles.bigItem, ...style }}>
             {smallItem && (
                 <View style={styles.smallItem}></View>
             )}

@@ -4,7 +4,7 @@ import { COLORS } from '../../themes'
 import { Text } from '../../components'
 import TrashIcon from 'react-native-vector-icons/FontAwesome5'
 
-export default function CheckOutItem({item, deleteProduct}) {
+export default function CheckOutItem({ item, deleteProduct }) {
     return (
         <View style={styles.container}
         >
@@ -12,7 +12,7 @@ export default function CheckOutItem({item, deleteProduct}) {
                 source={{ uri: item.image }}
                 style={styles.image}
             />
-            <View style={{ marginHorizontal: 10, justifyContent: 'center', width: '65%' }}>
+            <View style={styles.info}>
                 <Text title bold>{item.name}</Text>
                 <Text>$ {item.price}</Text>
                 <Text>Size: {item.size}</Text>
@@ -30,14 +30,19 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.lightGray,
         borderRadius: 15,
     },
-    image: { 
-        width: 120, 
-        height: 120, 
-        transform: [{ rotate: '-25deg' }] 
+    image: {
+        width: 120,
+        height: 120,
+        transform: [{ rotate: '-25deg' }]
     },
-    icon: { 
-        position: 'absolute', 
-        bottom: 10, 
-        right: 20 
+    info: {
+        marginHorizontal: 10,
+        justifyContent: 'center',
+        width: '65%'
+    },
+    icon: {
+        position: 'absolute',
+        bottom: 10,
+        right: 20
     }
 })

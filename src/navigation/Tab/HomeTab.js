@@ -39,7 +39,7 @@ export default function HomeTab() {
                 name={tabName.searchTab}
                 component={Screen.SearchScreen}
                 options={{
-                    tabBarIcon: (params) => tabBarIcon({ ...params }, 'search'),
+                    tabBarIcon: (params) => tabBarIcon({ ...params }, 'location-on'),
                 }}
             />
         </BottomTab.Navigator>

@@ -21,7 +21,7 @@ export default function LoginScreen({ navigation }) {
     const password = useSelector(state => state.signUpReducer.userInfo.password);
     const opacity = useRef(new Animated.Value(0)).current;
     const translateY = useRef(new Animated.Value(-200)).current;
-    
+
     const handleSubmit = (values) => {
         if (values.email === email && values.password === password) {
             navigation.navigate(stackName.homeStack);
@@ -60,7 +60,7 @@ export default function LoginScreen({ navigation }) {
                         <LoginForm style={{
                             ...styles.loginForm,
                             opacity,
-                            transform: [ {translateY}],
+                            transform: [{ translateY }],
                         }}
                         >
                             <TextInput
