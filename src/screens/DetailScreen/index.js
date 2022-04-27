@@ -63,7 +63,7 @@ export default function DetailScreen({ navigation, route }) {
     }
 
     const onPressAddToCart = (shoe) => {
-        navigation.navigate(stackName.cartStack, { shoe, size: sizeFocus });
+        navigation.navigate(stackName.cartStack, { id: shoe.id, size: sizeFocus });
     }
 
     useEffect(() => {

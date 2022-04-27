@@ -1,9 +1,11 @@
 import axios from 'axios'
+import { useSelector } from 'react-redux';
 import {
     requestDetailShoeSuccess,
     requestListCategorySuccess,
     requestListShoeByCategorySuccess,
-    requestListShoeSuccess
+    requestListShoeSuccess,
+    requestCartListShoeSuccess,
 } from '../actions/action';
 
 export const requestListCategory = () => {
@@ -60,6 +62,21 @@ export const requestDetailShoe = (id) => {
             })
             const shoe = res.data.content;
             dispatch(requestDetailShoeSuccess(shoe))
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}
+
+export const requestCartListShoe = (item) => {
+    return async dispatch => {
+        try {
+            const res = await axios({
+                method: 'GET',
+                url: `http://svcy3.myclass.vn/api/Product/getbyid?id=${item.id}`
+            })
+            const shoe = res.data.content;
+            dispatch(requestCartListShoeSuccess({...shoe, size: item.size}))
         } catch (err) {
             console.log(err);
         }

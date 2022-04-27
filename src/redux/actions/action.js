@@ -4,7 +4,8 @@ export const REQUEST_LIST_SHOE_SUCCESS = 'REQUEST_LIST_SHOE_SUCCESS';
 export const REQUEST_LIST_SHOE_BYCATEGORY_SUCCESS = 'REQUEST_LIST_SHOE_BYCATEGORY_SUCCESS';
 export const REQUEST_SEARCH_SHOE = 'REQUEST_SEARCH_SHOE';
 export const REQUEST_DETAIL_SHOE_SUCCESS = 'REQUEST_DETAIL_SHOE_SUCCESS';
-export const REQUEST_CART_LIST_SHOE = 'REQUEST_CART_LIST_SHOE';
+export const REQUEST_CART_LIST_SHOE_SUCCESS = 'REQUEST_CART_LIST_SHOE_SUCCESS';
+export const REQUEST_CART_LIST_SHOE_AFTER_DELETE = 'REQUEST_CART_LIST_SHOE_AFTER_DELETE';
 
 export const setUserInfo = (payload) => {
     return {
@@ -48,9 +49,16 @@ export const requestDetailShoeSuccess = (payload) => {
     }
 }
 
-export const requestCartListShoe = (payload) => {
+export const requestCartListShoeSuccess = (payload) => {
     return {
-        type: REQUEST_CART_LIST_SHOE,
+        type: REQUEST_CART_LIST_SHOE_SUCCESS,
+        payload
+    }
+}
+
+export const requestCartListShoeAterDelete = (payload) => {
+    return {
+        type: REQUEST_CART_LIST_SHOE_AFTER_DELETE,
         payload
     }
 }
