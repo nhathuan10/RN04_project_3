@@ -6,6 +6,7 @@ import IntroScreen from './IntroScreen';
 import LoginScreen from './LoginScreen';
 import SignUpScreen from './SignUpScreen';
 import CartScreen from './CartScreen';
+import MapScreen from './MapScreen';
 
 const Screen = {
     HomeScreen,
@@ -16,6 +17,7 @@ const Screen = {
     SignUpScreen,
     LoginScreen,
     CartScreen,
+    MapScreen,
 }
 
 export default Screen
