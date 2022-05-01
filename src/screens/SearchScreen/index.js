@@ -31,7 +31,7 @@ export default function SearchScreen({ navigation }) {
             end={{ x: 0.6, y: 0.2 }}
         >
             <View style={styles.container}>
-                <Text header bold>OUR STORES</Text>
+                <Text header bold>OUR LOCATIONS</Text>
                 <FlatList
                     data={stores}
                     renderItem={renderItem}
