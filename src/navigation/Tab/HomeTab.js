@@ -6,6 +6,7 @@ import { tabName } from '../../configs/navigationConstants';
 import { COLORS } from '../../themes';
 import TabIcon from 'react-native-vector-icons/MaterialIcons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import SearchStack from '../Stack/SearchStack';
 
 const BottomTab = createMaterialBottomTabNavigator();
 
@@ -37,7 +38,7 @@ export default function HomeTab() {
             />
             <BottomTab.Screen
                 name={tabName.searchTab}
-                component={Screen.SearchScreen}
+                component={SearchStack}
                 options={{
                     tabBarIcon: (params) => tabBarIcon({ ...params }, 'location-on'),
                 }}
