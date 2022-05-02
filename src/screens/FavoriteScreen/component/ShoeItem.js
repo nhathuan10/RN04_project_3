@@ -12,7 +12,7 @@ export default function ShoeItem({ item, onPress }) {
                 padding: 10,
                 borderRadius: 25,
                 backgroundColor: COLORS.lightGray,
-                flexWrap: 'wrap'
+                elevation: 6
             }}
         >
             <Image

@@ -8,7 +8,7 @@ const stackName = {
     searchListStack: 'SearchListStack',
     searchMapStack: 'SeachMapStack',
     favoriteStack: 'FavoriteStack',
-    favoriteLinkStack: 'FavoriteLinkStack'
+    favoriteLinkStack: 'FavoriteLinkStack',
 }
 
 const tabName = {
