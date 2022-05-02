@@ -1,4 +1,4 @@
-import { Image, StyleSheet, View, TouchableOpacity, FlatList, Animated, Modal } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, FlatList, Animated, Modal } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import { BackgroundView, Button, Text } from '../../components'
 import { useDispatch, useSelector } from 'react-redux'

@@ -1,11 +1,8 @@
-import { FlatList, Image, StyleSheet, TouchableOpacity, View, Animated, Dimensions } from 'react-native'
+import { StyleSheet, View, Animated, Dimensions } from 'react-native'
 import React, { useEffect, useState, useRef } from 'react'
 import { stackName } from '../../configs/navigationConstants'
 import { BackgroundView } from '../../components'
-import { COLORS } from '../../themes'
 import HeaderPanel from './components/HeaderPanel'
-import Header from './components/Header'
-import { Text } from '../../components'
 import CategoryItem from './components/CategoryItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { requestDetailShoe, requestListCategory, requestListShoe, requestListShoeByCategory } from '../../redux/thunk/actionThunk'
@@ -74,7 +71,7 @@ export default function HomeScreen({ navigation }) {
         dispatch(requestListShoe());
     }, []);
 
-    useEffect(()=> {
+    useEffect(() => {
         dispatch(requestDetailShoe(1))
     }, [])
 
