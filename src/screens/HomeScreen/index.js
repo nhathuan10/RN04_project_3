@@ -8,7 +8,7 @@ import Header from './components/Header'
 import { Text } from '../../components'
 import CategoryItem from './components/CategoryItem'
 import { useDispatch, useSelector } from 'react-redux'
-import { requestListCategory, requestListShoe, requestListShoeByCategory } from '../../redux/thunk/actionThunk'
+import { requestDetailShoe, requestListCategory, requestListShoe, requestListShoeByCategory } from '../../redux/thunk/actionThunk'
 import ShoeItem from './components/ShoeItem'
 import HeaderContainer from './components/HeaderContainer'
 
@@ -73,6 +73,10 @@ export default function HomeScreen({ navigation }) {
     useEffect(() => {
         dispatch(requestListShoe());
     }, []);
+
+    useEffect(()=> {
+        dispatch(requestDetailShoe(1))
+    }, [])
 
     useEffect(() => {
         Animated.parallel([

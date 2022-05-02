@@ -7,6 +7,8 @@ const stackName = {
     cartStack: 'CartStack',
     searchListStack: 'SearchListStack',
     searchMapStack: 'SeachMapStack',
+    favoriteStack: 'FavoriteStack',
+    favoriteLinkStack: 'FavoriteLinkStack'
 }
 
 const tabName = {

@@ -26,7 +26,7 @@ export default function MapScreen({ navigation, route }) {
             >
                 <Marker coordinate={location}>
                     <View style={styles.infoContainer}>
-                        <Text bold style={{ color: COLORS.lightGray }}>Xú's Shoe</Text>
+                        <Text bold style={{ color: COLORS.lightGray }}>Xú's Store</Text>
                         <Text italic style={{ color: COLORS.lightGray }}>{location.address}</Text>
                     </View>
                     <View style={styles.smallIcon} />

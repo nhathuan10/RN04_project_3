@@ -6,12 +6,13 @@ import { COLORS } from '../../themes';
 import TabIcon from 'react-native-vector-icons/MaterialIcons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import SearchStack from '../Stack/SearchStack';
+import FavoriteStack from '../Stack/FavoriteStack';
 
 const BottomTab = createMaterialBottomTabNavigator();
 
 export default function HomeTab() {
     const tabBarIcon = ({ focused }, iconName) => {
-        return <TabIcon name={iconName} color={focused ? COLORS.lightGray : COLORS.semiBoldGray} size={focused ? 27 : 24} />
+        return <TabIcon name={iconName} color={focused ? COLORS.lightGray : COLORS.semiBoldGray} size={focused ? 26 : 24} />
     }
     return (
         <BottomTab.Navigator
@@ -30,7 +31,7 @@ export default function HomeTab() {
             />
             <BottomTab.Screen
                 name={tabName.favoriteTab}
-                component={Screen.FavoriteScreen}
+                component={FavoriteStack}
                 options={{
                     tabBarIcon: (params) => tabBarIcon({ ...params }, 'favorite'),
                 }}
