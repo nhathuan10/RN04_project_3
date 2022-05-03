@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, TouchableOpacity, View, Alert, Animated } from 'react-native'
+import { FlatList, StyleSheet, TouchableOpacity, View, Animated } from 'react-native'
 import React, { useRef } from 'react'
 import { Button, Text } from '../../components'
 import { useDispatch, useSelector } from 'react-redux'
@@ -15,6 +15,10 @@ export default function CartScreen({ navigation, route }) {
     const cartListShoe = useSelector(state => state.shoeReducer.cartListShoe);
     const dispatch = useDispatch();
     const opacity = useRef(new Animated.Value(0)).current;
+    const translateY = opacity.interpolate({
+        inputRange: [0, 0.5, 1],
+        outputRange: [200, 100, 0]
+    })
 
     useEffect(() => {
         dispatch(requestCartListShoe({ id: route.params.id, size: route.params.size }));
@@ -23,8 +27,8 @@ export default function CartScreen({ navigation, route }) {
     useEffect(() => {
         Animated.timing(opacity, {
             toValue: 1,
-            duration: 800,
-            useNativeDriver: true,
+            duration: 500,
+            useNativeDriver: false,
         }).start();
     })
 
@@ -49,13 +53,13 @@ export default function CartScreen({ navigation, route }) {
             start={{ x: 0.5, y: 0.7 }}
             end={{ x: 0.7, y: 0.5 }}
         >
-            <Animated.View style={{ ...styles.subContainer, opacity }}>
-                <View style={styles.title}>
+            <Animated.View style={{...styles.subContainer, opacity}}>
+                <Animated.View style={{ ...styles.title, transform: [{ translateY }], opacity }}>
                     <TouchableOpacity onPress={() => navigation.goBack()}>
                         <BackIcon name='arrow-back' size={35} color={COLORS.lightGray} />
                     </TouchableOpacity>
                     <CartIcon name='shopping-cart' size={75} color={COLORS.lightGray} />
-                </View>
+                </Animated.View>
                 <FlatList
                     data={cartListShoe}
                     renderItem={renderItem}

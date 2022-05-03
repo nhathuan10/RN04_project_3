@@ -11,17 +11,17 @@ export default function RootNavigation() {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             {/* <Stack.Screen
-                name={stackName.introStack}
-                component={Screen.IntroScreen} 
-            /> */}
-            {/* <Stack.Screen
                 name={stackName.signUpStack}
-                component={Screen.SignUpScreen} 
+                component={Screen.SignUpScreen}
             />
             <Stack.Screen
                 name={stackName.loginStack}
-                component={Screen.LoginScreen} 
+                component={Screen.LoginScreen}
             /> */}
+            <Stack.Screen
+                name={stackName.introStack}
+                component={Screen.IntroScreen}
+            />
             <Stack.Screen
                 name={stackName.homeStack}
                 component={HomeTab}

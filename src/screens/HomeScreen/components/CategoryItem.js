@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Text } from '../../../components'
 import { COLORS } from '../../../themes'
 
-export default function CategoryItem({ item, onPressCategoryFocus, categoryFocus }) {
+export default function CategoryItem({ item, onPressCategoryFocus, categoryFocus, style }) {
 
     return (
         <TouchableOpacity
@@ -11,7 +11,7 @@ export default function CategoryItem({ item, onPressCategoryFocus, categoryFocus
         >
             <Text
                 title
-                style={(categoryFocus === item.category) ? styles.focused : styles.normal}
+                style={[(categoryFocus === item.category) ? styles.focused : styles.normal, style]}
             >
                 {item.category}
             </Text>

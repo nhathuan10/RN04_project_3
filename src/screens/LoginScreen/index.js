@@ -24,7 +24,7 @@ export default function LoginScreen({ navigation }) {
 
     const handleSubmit = (values) => {
         if (values.email === email && values.password === password) {
-            navigation.navigate(stackName.homeStack);
+            navigation.navigate(stackName.introStack);
         } else {
             Alert.alert(
                 'Sorry',

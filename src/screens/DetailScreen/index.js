@@ -21,24 +21,24 @@ export default function DetailScreen({ navigation, route }) {
     const [backgroundOpacity, setBackgroundOpacity] = useState(1);
     const [relatedProduct, setRelatedProduct] = useState({});
     const translateY = opacity.interpolate({
-        inputRange: [0, 1],
-        outputRange: [-200, 0]
+        inputRange: [0, 0.5, 1],
+        outputRange: [-200, -100, 0]
     })
     const translateX = translateY.interpolate({
-        inputRange: [-200, 0],
-        outputRange: [-200, 0]
+        inputRange: [-200, -100, 0],
+        outputRange: [-200, -100, 0]
     })
     const translateX2 = translateY.interpolate({
-        inputRange: [-200, 0],
-        outputRange: [200, 0]
+        inputRange: [-200, -100, 0],
+        outputRange: [200, 100, 0]
     })
     const translateYFlatList = opacity.interpolate({
-        inputRange: [0, 1],
-        outputRange: [250, 0]
+        inputRange: [0, 0.5, 1],
+        outputRange: [250, 125, 0]
     })
     const rotate = translateY.interpolate({
-        inputRange: [-200, 0],
-        outputRange: ['360deg', '-25deg']
+        inputRange: [-200, -100, 0],
+        outputRange: ['360deg', '180deg', '-25deg']
     })
     const onPressSizeFocus = (item) => {
         setSizeFocus(item)
@@ -78,7 +78,7 @@ export default function DetailScreen({ navigation, route }) {
     useEffect(() => {
         Animated.timing(opacity, {
             toValue: 1,
-            duration: 400,
+            duration: 500,
             useNativeDriver: true
         }).start();
     })
