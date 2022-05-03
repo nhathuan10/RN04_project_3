@@ -9,7 +9,7 @@ export default function SlideItem({ item }) {
                 source={item.src}
                 style={{
                     height: 340,
-                    width: 390,
+                    width: 380,
                     borderRadius: 60,
                 }}
             />
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'space-around',
         alignItems: 'center',
-        backgroundColor: COLORS.boldGray
+        backgroundColor: COLORS.boldGray,
     },
     text: {
         color: COLORS.lightGray,
