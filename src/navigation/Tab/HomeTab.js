@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
 import Screen from '../../screens';
 import { tabName } from '../../configs/navigationConstants';
@@ -21,7 +21,7 @@ export default function HomeTab() {
             activeColor={COLORS.semiLightGray}
             labeled={false}
             tabBarOptions={{ activeTintColor: 'red' }}
-            >
+        >
             <BottomTab.Screen
                 name={tabName.homeTab}
                 component={Screen.HomeScreen}

@@ -11,7 +11,6 @@ import SizeItem from './components/SizeItem'
 import RelatedProductItem from './components/RelatedProductItem'
 import ModalItem from './components/ModalItem'
 
-
 export default function DetailScreen({ navigation, route }) {
     const dispatch = useDispatch();
     const shoe = useSelector(state => state.shoeReducer.shoe);

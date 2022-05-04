@@ -1,4 +1,4 @@
-import { FlatList, Image, StyleSheet, TouchableOpacity, View, Animated } from 'react-native'
+import { FlatList, StyleSheet, TouchableOpacity, View, Animated } from 'react-native'
 import React from 'react'
 import { BackgroundView, Button, Text } from '../../components'
 import { stackName } from '../../configs/navigationConstants'

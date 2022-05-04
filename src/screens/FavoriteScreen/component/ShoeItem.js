@@ -1,6 +1,5 @@
 import { Image, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { Text } from '../../../components'
 import { COLORS } from '../../../themes'
 
 export default function ShoeItem({ item, onPress }) {
