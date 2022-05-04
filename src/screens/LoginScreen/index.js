@@ -1,4 +1,4 @@
-import { Alert, StyleSheet, TouchableOpacity, View, Animated } from 'react-native'
+import { Alert, StyleSheet, TouchableOpacity, Animated } from 'react-native'
 import React, { useEffect, useRef } from 'react'
 import { stackName } from '../../configs/navigationConstants'
 import { BackgroundView, Button, LoginForm, TextInput } from '../../components'

@@ -1,4 +1,4 @@
-import { Adidas, Nike, Jordan, Puma} from "../../../assets/images"
+import { Adidas, Nike, Jordan, Puma } from "../../../assets/images"
 
 export const slides = [
     { id: 1, src: Adidas, title: 'JUST DO IT' },

@@ -1,5 +1,5 @@
 import { StyleSheet, Text as TEXT, View } from 'react-native'
-import React, { Children } from 'react'
+import React from 'react'
 import { COLORS } from '../../themes'
 
 export default function Text({ header, bold, title, subText, style, italic , children, }) {

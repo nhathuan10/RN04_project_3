@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { stackName } from '../../configs/navigationConstants';
@@ -8,12 +8,12 @@ const Stack = createNativeStackNavigator();
 
 export default function SearchStack() {
     return (
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen 
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen
                 name={stackName.searchListStack}
                 component={Screen.SearchScreen}
             />
-            <Stack.Screen 
+            <Stack.Screen
                 name={stackName.searchMapStack}
                 component={Screen.MapScreen}
             />
