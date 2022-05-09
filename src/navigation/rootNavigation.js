@@ -10,14 +10,14 @@ const Stack = createNativeStackNavigator();
 export default function RootNavigation() {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-            {/* <Stack.Screen
+            <Stack.Screen
                 name={stackName.signUpStack}
                 component={Screen.SignUpScreen}
             />
             <Stack.Screen
                 name={stackName.loginStack}
                 component={Screen.LoginScreen}
-            /> */}
+            />
             <Stack.Screen
                 name={stackName.introStack}
                 component={Screen.IntroScreen}

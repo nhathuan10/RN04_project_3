@@ -15,6 +15,7 @@ const tabName = {
     homeTab: 'HomeTab',
     favoriteTab: 'FavoriteTab',
     searchTab: 'SearchTab',
+    profileTab: 'ProfileTab',
 }
 
 export { stackName, tabName }
