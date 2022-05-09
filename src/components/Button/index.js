@@ -3,7 +3,6 @@ import React from 'react'
 import { COLORS } from '../../themes'
 import Text from '../Text'
 
-
 export default function Button({ text, style, title, header, normal, textStyle, onPressSignUp, onPressLogIn, onPressAddToCart, onPressCheckout, viewOnMap }) {
     if (onPressSignUp) {
         return (

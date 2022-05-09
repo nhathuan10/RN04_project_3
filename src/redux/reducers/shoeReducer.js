@@ -1,3 +1,4 @@
+import { Profile } from "../../assets/images"
 import {
     REQUEST_CART_LIST_SHOE_AFTER_DELETE,
     REQUEST_CART_LIST_SHOE_SUCCESS,
@@ -5,7 +6,8 @@ import {
     REQUEST_LIST_CATEGORY_SUCCESS,
     REQUEST_LIST_SHOE_BYCATEGORY_SUCCESS,
     REQUEST_LIST_SHOE_SUCCESS,
-    REQUEST_SEARCH_SHOE
+    REQUEST_SEARCH_SHOE,
+    SET_AVATAR
 }
     from "../actions/action"
 
@@ -13,7 +15,8 @@ const initialState = {
     listCategory: [],
     listShoe: [],
     shoe: {},
-    cartListShoe: []
+    cartListShoe: [],
+    avatar: Profile
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -32,6 +35,8 @@ export default (state = initialState, { type, payload }) => {
             return { ...state, cartListShoe: [...state.cartListShoe, payload] };
         case REQUEST_CART_LIST_SHOE_AFTER_DELETE:
             return { ...state, cartListShoe: payload }
+        case SET_AVATAR:
+            return {...state, avatar: payload}
         default:
             return state;
     }

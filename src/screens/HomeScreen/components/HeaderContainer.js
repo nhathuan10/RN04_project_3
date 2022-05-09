@@ -16,9 +16,7 @@ export default function HeaderContainer({ listShoe }) {
     }
 
     return (
-        <View
-            style={styles.container}
-        >
+        <View style={styles.container}>
             <TextInput
                 style={{ width: 310, margin: 0 }}
                 styleInput={{ width: '100%' }}

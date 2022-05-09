@@ -1,4 +1,4 @@
-import { StyleSheet} from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { stackName } from '../../configs/navigationConstants';
@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 
 export default function FavoriteStack() {
     return (
-        <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen
                 name={stackName.favoriteStack}
                 component={Screen.FavoriteScreen}

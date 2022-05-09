@@ -1,7 +1,5 @@
 import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { Text } from '../../components'
-import { stackName } from '../../configs/navigationConstants'
 import { WebView } from 'react-native-webview'
 import BackIcon from 'react-native-vector-icons/Foundation'
 import { COLORS } from '../../themes'

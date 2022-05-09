@@ -6,6 +6,7 @@ export const REQUEST_SEARCH_SHOE = 'REQUEST_SEARCH_SHOE';
 export const REQUEST_DETAIL_SHOE_SUCCESS = 'REQUEST_DETAIL_SHOE_SUCCESS';
 export const REQUEST_CART_LIST_SHOE_SUCCESS = 'REQUEST_CART_LIST_SHOE_SUCCESS';
 export const REQUEST_CART_LIST_SHOE_AFTER_DELETE = 'REQUEST_CART_LIST_SHOE_AFTER_DELETE';
+export const SET_AVATAR = 'SET_AVATAR';
 
 export const setUserInfo = (payload) => {
     return {
@@ -59,6 +60,13 @@ export const requestCartListShoeSuccess = (payload) => {
 export const requestCartListShoeAterDelete = (payload) => {
     return {
         type: REQUEST_CART_LIST_SHOE_AFTER_DELETE,
+        payload
+    }
+}
+
+export const setAvatar = (payload) => {
+    return {
+        type: SET_AVATAR,
         payload
     }
 }
