@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { BackgroundView } from '../../../components'
 import { COLORS } from '../../../themes'
 
 export default function HeaderPanel({ style, smallItem }) {
