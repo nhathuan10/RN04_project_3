@@ -30,7 +30,7 @@ export default function CartScreen({ navigation, route }) {
             duration: 500,
             useNativeDriver: false,
         }).start();
-    })
+    }, [])
 
     let total = cartListShoe.reduce((sum, item) => {
         return sum += item.price;

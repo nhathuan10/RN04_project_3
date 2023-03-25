@@ -53,11 +53,11 @@ export default function FavoriteScreen({ navigation }) {
             duration: 700,
             useNativeDriver: true,
         }).start();
-    })
+    }, [])
 
     useEffect(() => {
         dispatch(requestListCategory);
-    })
+    }, [])
 
     const onPressShoeItem = (item) => {
         dispatch(requestDetailShoe(item.id));

@@ -5,7 +5,7 @@ import { BackgroundView } from '../../components'
 import HeaderPanel from './components/HeaderPanel'
 import CategoryItem from './components/CategoryItem'
 import { useDispatch, useSelector } from 'react-redux'
-import { requestDetailShoe, requestListCategory, requestListShoe, requestListShoeByCategory } from '../../redux/thunk/actionThunk'
+import { requestListCategory, requestListShoe, requestListShoeByCategory } from '../../redux/thunk/actionThunk'
 import ShoeItem from './components/ShoeItem'
 import HeaderContainer from './components/HeaderContainer'
 
@@ -72,10 +72,6 @@ export default function HomeScreen({ navigation }) {
     }, []);
 
     useEffect(() => {
-        dispatch(requestDetailShoe(1))
-    }, [])
-
-    useEffect(() => {
         Animated.parallel([
             Animated.timing(opacityFlatList, {
                 toValue: 1,
@@ -93,7 +89,7 @@ export default function HomeScreen({ navigation }) {
                 useNativeDriver: true,
             }),
         ]).start();
-    })
+    }, [])
 
     return (
         <BackgroundView style={styles.container}>

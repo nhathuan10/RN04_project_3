@@ -67,7 +67,7 @@ export default function DetailScreen({ navigation, route }) {
 
     useEffect(() => {
         dispatch(requestDetailShoe(route.params.id))
-    })
+    }, [])
 
     const backFromRelatedProduct = () => {
         setModalVisible(!modalVisible);
@@ -77,10 +77,10 @@ export default function DetailScreen({ navigation, route }) {
     useEffect(() => {
         Animated.timing(opacity, {
             toValue: 1,
-            duration: 500,
+            duration: 700,
             useNativeDriver: true
         }).start();
-    })
+    }, [])
 
     return (
         <BackgroundView style={{ opacity: backgroundOpacity }}>

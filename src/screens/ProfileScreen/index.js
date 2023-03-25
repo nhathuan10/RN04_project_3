@@ -29,7 +29,7 @@ export default function ProfileScreen({ navigation }) {
             tension: 50,
             useNativeDriver: true
         }).start();
-    })
+    }, [])
 
     const setNameHandler = (text) => {
         setName(text);
